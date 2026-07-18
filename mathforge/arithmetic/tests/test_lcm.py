@@ -48,7 +48,7 @@ def run_tests()->None:
         except TypeError:
             pass
         else:
-            raise AssertionError(f"Expected TypeError for gcd({a}, {b})")
+            raise AssertionError(f"Expected TypeError for lcm({a}, {b})")
 
     print("✓ Invalid type cases passed")
 
