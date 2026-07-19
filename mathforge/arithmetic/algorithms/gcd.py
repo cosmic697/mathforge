@@ -1,7 +1,7 @@
 """
 GREATEST COMMON DIVISOR(GCD)
 
-this module provieds an implementation of the euclidean algorithm for computing the Greatest Common Divisor(GCD) of two integers.
+this module provides an implementation of the euclidean algorithm for computing the Greatest Common Divisor(GCD) of two integers.
 """
 from mathforge.core.errors import InvalidOperandError, UndefinedOperationError
 
@@ -35,7 +35,7 @@ def gcd(a:int , b:int)->int:
 
     #reject boolean 
     if isinstance(a,bool) or isinstance(b,bool):
-        raise InvalidOperandError("arrgument must be integer , not boolean.")
+        raise InvalidOperandError("argument must be integer , not boolean.")
     
     #validate type
     if not isinstance(a,int) or not isinstance(b,int):

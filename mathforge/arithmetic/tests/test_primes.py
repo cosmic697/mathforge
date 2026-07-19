@@ -1,7 +1,7 @@
 """
 mathforge/arithmetic/tests/test_primes.py
 
-Unot test for the primes algorithm
+Unit test for the primes algorithm
 """
 import pytest
 from mathforge.arithmetic.algorithms.primes import is_prime

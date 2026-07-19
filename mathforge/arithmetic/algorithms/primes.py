@@ -10,12 +10,12 @@ def is_prime(n: int) ->int:
     """
     Determine if the number is prime or not.
 
-    A prime is a positive interger greater than 1 and that has exactly two positive divisors: 1 and itself.
+    A prime is a positive integer greater than 1 and that has exactly two positive divisors: 1 and itself.
 
     Parameters
     ----------
     a : int
-        integer to test for primality.
+        integer to test for prime.
 
     Returns
     -------

@@ -1,7 +1,7 @@
 """
 LEAST COMMON MULTIPLE
 
-this module provids an implementation of the Least Common Multiple(LCD) algorithm using the GCD algo
+this module provides an implementation of the Least Common Multiple(LCD) algorithm using the GCD algo
 """
 from mathforge.arithmetic.algorithms.gcd import gcd
 from mathforge.core.errors import InvalidOperandError, UndefinedOperationError
@@ -46,7 +46,7 @@ def lcm(a: int, b: int)->int:
     if a==0 and b==0:
         raise UndefinedOperationError("LCM is undefined for (0,0)")
     
-    #by defination LCM(0,n)=0
+    #by definition LCM(0,n)=0
     if a==0 or b==0:
         return 0
     

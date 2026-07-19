@@ -3,7 +3,7 @@ mathforge/core/errors.py
 
 Base exception hierarchy for mathforge
 
-Every error mathforge raises should trace back to MahtForgeError so callers can do 'except MathForgeError' to catch anything the library raises, regardless of which module it came from
+Every error mathforge raises should trace back to MathForgeError so callers can do 'except MathForgeError' to catch anything the library raises, regardless of which module it came from
 
 """
 
@@ -27,7 +27,7 @@ class DomainError(MathForgeError,ValueError):
 
 class ConvergenceError(MathForgeError):
     """
-    Raiswd when a iterative numerical method fails to converge
+    Raised when a iterative numerical method fails to converge
     """
 
 class ParserError(MathForgeError,SyntaxError):
