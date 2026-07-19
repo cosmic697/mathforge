@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mathforge"
+version = "0.1.0"
+description = "a modular mathematical computing platform"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Pushkar Garg", email = "pushkargarg74@gmail.com"}]
+dependencies = [
+    "PyQt6>=6.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "ruff"]
+
+[project.scripts]
+mathforge = "mathforge.__main__:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests","mathforge"]
+
+[tool.ruff]
+line-length = 100

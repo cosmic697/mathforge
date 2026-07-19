@@ -4,6 +4,7 @@ PRIMES
 this module provides the algorithm related to prime numbers.
 """
 import math
+from mathforge.core.errors import InvalidOperandError
 
 def is_prime(n: int) ->int:
     """
@@ -30,11 +31,11 @@ def is_prime(n: int) ->int:
 
     #reject if boolean 
     if isinstance(n,bool):
-        raise TypeError("Argument must be an integer, not a boolean")
+        raise InvalidOperandError("Argument must be an integer, not a boolean")
 
     #validate type
     if not isinstance(n,int):
-        raise TypeError("Argument must be an integer")
+        raise InvalidOperandError("Argument must be an integer")
     
     #prime number must be greater than one
     if n<=1:

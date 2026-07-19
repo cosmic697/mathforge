@@ -1,16 +1,14 @@
 """
-Unit tests for the primes algo
+mathforge/arithmetic/tests/test_primes.py
+
+Unot test for the primes algorithm
 """
-
+import pytest
 from mathforge.arithmetic.algorithms.primes import is_prime
+from mathforge.core.errors import InvalidOperandError
 
-def run_tests()->None:
-    """Run all prime test case"""
 
-    print("Running prime test case")
-
-    #prime number
-
+def test_primes_cases():
     assert is_prime(2) is True
     assert is_prime(3) is True
     assert is_prime(5) is True
@@ -19,10 +17,8 @@ def run_tests()->None:
     assert is_prime(13) is True
     assert is_prime(97) is True
 
-    print("✓ Prime cases passed")
 
-    #composite number 
-
+def test_composite_cases():
     assert is_prime(4) is False
     assert is_prime(6) is False
     assert is_prime(8) is False
@@ -30,37 +26,21 @@ def run_tests()->None:
     assert is_prime(10) is False
     assert is_prime(100) is False
 
-    print("✓ Composite cases passed")
 
-    #Edge cases
-
+def test_edge_cases():
     assert is_prime(0) is False
     assert is_prime(1) is False
     assert is_prime(-1) is False
     assert is_prime(-17) is False
 
-    print("✓ Edge cases passed")
 
-    # Invalid Types
-    invalid_inputs = [
+@pytest.mark.parametrize( "a", [
         12.5,
         "12",
         True,
         [],
         None,
-    ]
-
-    for a in invalid_inputs:
-        try:
-            is_prime(a)
-        except TypeError:
-            pass
-        else:
-            raise AssertionError(f"Expected TypeError for is_prime({a})")
-
-    print("✓ Invalid type cases passed")
-
-    print("\nAll prime tests passed successfully! 🎉")
-
-if __name__ == "__main__":
-    run_tests()
+])
+def test_primes_invalid_types(a):
+    with pytest.raises(InvalidOperandError):
+        is_prime(a)

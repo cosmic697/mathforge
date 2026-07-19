@@ -3,6 +3,7 @@ GREATEST COMMON DIVISOR(GCD)
 
 this module provieds an implementation of the euclidean algorithm for computing the Greatest Common Divisor(GCD) of two integers.
 """
+from mathforge.core.errors import InvalidOperandError, UndefinedOperationError
 
 def gcd(a:int , b:int)->int:
     """
@@ -34,15 +35,15 @@ def gcd(a:int , b:int)->int:
 
     #reject boolean 
     if isinstance(a,bool) or isinstance(b,bool):
-        raise TypeError("arrgument must be integer , not boolean.")
+        raise InvalidOperandError("arrgument must be integer , not boolean.")
     
     #validate type
     if not isinstance(a,int) or not isinstance(b,int):
-        raise TypeError("arguments must be integers.")
+        raise InvalidOperandError("arguments must be integers.")
     
     #GCD(0,0) is undefined
     if a==0 and b==0:
-        raise ValueError("GCD is undefined for (0,0)")
+        raise UndefinedOperationError("GCD is undefined for (0,0)")
 
     #work with positive values 
     a=abs(a)

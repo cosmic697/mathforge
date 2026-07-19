@@ -1,11 +1,12 @@
 """
 LEAST COMMON MULTIPLE
 
-this module provieds an implementation of the Least Common Multiple(LCD) algorithm using the GCD algo
+this module provids an implementation of the Least Common Multiple(LCD) algorithm using the GCD algo
 """
 from mathforge.arithmetic.algorithms.gcd import gcd
+from mathforge.core.errors import InvalidOperandError, UndefinedOperationError
 
-def lcm(a: int, b: int) ->int:
+def lcm(a: int, b: int)->int:
     """
     Compute the Least Common Multiple (LCM) of two integers.
 
@@ -36,14 +37,14 @@ def lcm(a: int, b: int) ->int:
 
     # Reject booleans (bool is a subclass of int in Python)
     if isinstance(a,bool) or isinstance(b,bool):
-        raise TypeError("Arguments must be integers, not booleans.")
+        raise InvalidOperandError("Arguments must be integers, not booleans.")
     
     #validate type 
     if not isinstance(a,int) or not isinstance(b,int):
-        raise TypeError()
+        raise InvalidOperandError("Argument must be a integer")
     #lcm(0,0) is undefined 
     if a==0 and b==0:
-        raise ValueError("LCM is undefined for (0,0)")
+        raise UndefinedOperationError("LCM is undefined for (0,0)")
     
     #by defination LCM(0,n)=0
     if a==0 or b==0:
