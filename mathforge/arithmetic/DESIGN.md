@@ -129,7 +129,7 @@ Interval
 - One file = One major mathematical object.
 - One class = One primary concept.
 - Public methods should include type hints.
-- Public methods should include docstrings.
+- Public methods should include doc strings.
 - Avoid global state.
 - Keep modules independent.
 
