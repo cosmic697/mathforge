@@ -8,20 +8,20 @@ This roadmap describes the complete long-term plan for the Arithmetic module.
 
 ## Mathematical Objects
 
-- [ ] Fraction
+- [x] Fraction
 
 ## Algorithms
 
-- [ ] Euclidean Algorithm (GCD)
-- [ ] Least Common Multiple
+- [x] Euclidean Algorithm (GCD)
+- [x] Least Common Multiple
 - [ ] Fraction Simplification
 
 ## Features
 
-- [ ] Operator Overloading
-- [ ] String Representation
-- [ ] Comparison Operators
-- [ ] Unit Tests
+- [x] Operator Overloading
+- [x] String Representation
+- [x] Comparison Operators
+- [x] Unit Tests
 - [ ] Documentation
 
 ---
@@ -30,7 +30,7 @@ This roadmap describes the complete long-term plan for the Arithmetic module.
 
 ## Objects
 
-- [ ] ComplexNumber
+- [x] ComplexNumber
 - [ ] Decimal
 - [ ] Percentage
 - [ ] Ratio
