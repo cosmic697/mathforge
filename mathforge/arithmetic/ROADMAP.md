@@ -32,7 +32,7 @@ This roadmap describes the complete long-term plan for the Arithmetic module.
 
 - [x] ComplexNumber
 - [x] Decimal
-- [ ] Percentage
+- [x] Percentage
 - [ ] Ratio
 
 ## Features
