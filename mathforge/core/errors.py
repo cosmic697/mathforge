@@ -34,3 +34,7 @@ class ParserError(MathForgeError,SyntaxError):
     """
     Raised for malformed input to the expression parser
     """
+class ParserError(MathForgeError, SyntaxError):
+    """
+    Raised for malformed input to the expression parser.
+    """
