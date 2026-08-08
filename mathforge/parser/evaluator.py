@@ -12,6 +12,7 @@ Evaluation is naturally recursive, mirroring how the tree itself is built: to ev
 """
 
 from mathforge.parser.ast_nodes import Number, BinaryOp
+from mathforge.arithmetic.numbers.fraction import Fraction
 from mathforge.core.errors import UndefinedOperationError, InvalidOperandError
 
 
@@ -22,45 +23,50 @@ _OPERATIONS = {
 }
 
 
-def evaluate(node) -> float:
+def evaluate(node) -> Fraction:
     """
-    Recursively evaluate an AST node to a float result.
+    Recursively evaluate an AST node to an exact Fraction result.
 
     Parameters
     ----------
     node : Number or BinaryOp
-        Typically the root returned by Parser.parse(), but any sub-node can be evaluated independently too — useful for testing evaluate() without going through the full parser.
 
     Returns
     -------
-    float
+    Fraction
 
     Raises
     ------
     InvalidOperandError
-        If node is not a Number or BinaryOp (e.g. None, or some other object accidentally passed in).
+        If node is not a Number or BinaryOp, if a Number holds a non-whole value (e.g. 3.14 — not representable exactly as a Fraction from a float), or if the operator is unknown.
     UndefinedOperationError
         If a BinaryOp divides by a right-hand side that evaluates to zero.
     """
     if isinstance(node, Number):
-        return node.value
+        if not node.value.is_integer():
+            raise InvalidOperandError(
+                f"only whole-number literals are supported in Fraction mode, got {node.value}"
+            )
+        return Fraction(int(node.value))
 
     if isinstance(node, BinaryOp):
         left_value = evaluate(node.left)
         right_value = evaluate(node.right)
 
+        if node.operator == "+":
+            return left_value + right_value
+        if node.operator == "-":
+            return left_value - right_value
+        if node.operator == "*":
+            return left_value * right_value
         if node.operator == "/":
-            if right_value == 0:
+            if right_value == Fraction(0):
                 raise UndefinedOperationError("division by zero")
             return left_value / right_value
 
-        operation = _OPERATIONS.get(node.operator)
-        if operation is None:
-            raise InvalidOperandError(f"unknown operator '{node.operator}'")
-        return operation(left_value, right_value)
+        raise InvalidOperandError(f"unknown operator '{node.operator}'")
 
     raise InvalidOperandError(f"cannot evaluate node of type {type(node).__name__}")
-
 
 def evaluate_string(source: str) -> float:
     """
