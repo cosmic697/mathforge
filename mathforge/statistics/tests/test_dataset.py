@@ -131,3 +131,73 @@ def test_population_std_dev():
 
 
 import math 
+
+# --- covariance ---
+
+def test_covariance_positive_relationship():
+    x = Dataset([1, 2, 3, 4, 5])
+    y = Dataset([2, 4, 6, 8, 10])
+    assert abs(x.covariance(y) - 5.0) < 1e-9
+
+
+def test_covariance_rejects_non_dataset():
+    with pytest.raises(InvalidOperandError):
+        Dataset([1, 2, 3]).covariance([1, 2, 3])
+
+
+def test_covariance_rejects_mismatched_length():
+    with pytest.raises(InvalidOperandError):
+        Dataset([1, 2, 3]).covariance(Dataset([1, 2]))
+
+
+def test_covariance_single_pair_raises_for_sample():
+    with pytest.raises(UndefinedOperationError):
+        Dataset([1]).covariance(Dataset([2]), sample=True)
+
+
+# --- correlation ---
+
+def test_correlation_perfect_positive():
+    x = Dataset([1, 2, 3, 4, 5])
+    y = Dataset([2, 4, 6, 8, 10])
+    assert abs(x.correlation(y) - 1.0) < 1e-9
+
+
+def test_correlation_perfect_negative():
+    x = Dataset([1, 2, 3, 4, 5])
+    y = Dataset([10, 8, 6, 4, 2])
+    assert abs(x.correlation(y) - (-1.0)) < 1e-9
+
+
+def test_correlation_zero_variance_raises():
+    x = Dataset([5, 5, 5, 5])
+    y = Dataset([1, 2, 3, 4])
+    with pytest.raises(UndefinedOperationError):
+        x.correlation(y)
+
+
+# --- linear_regression ---
+
+def test_linear_regression_exact_line():
+    # y = 2x, so slope=2, intercept=0
+    x = Dataset([1, 2, 3, 4])
+    y = Dataset([2, 4, 6, 8])
+    slope, intercept = x.linear_regression(y)
+    assert abs(slope - 2.0) < 1e-9
+    assert abs(intercept - 0.0) < 1e-9
+
+
+def test_linear_regression_with_intercept():
+    # y = 2x + 1
+    x = Dataset([1, 2, 3, 4])
+    y = Dataset([3, 5, 7, 9])
+    slope, intercept = x.linear_regression(y)
+    assert abs(slope - 2.0) < 1e-9
+    assert abs(intercept - 1.0) < 1e-9
+
+
+def test_linear_regression_zero_variance_x_raises():
+    x = Dataset([5, 5, 5])
+    y = Dataset([1, 2, 3])
+    with pytest.raises(UndefinedOperationError):
+        x.linear_regression(y)
