@@ -1,10 +1,10 @@
 # Numerical Methods Module Roadmap
 
 # Phase 1 — Root Finding
-- [ ] Bisection method
-- [ ] Newton-Raphson method
-- [ ] Secant method
-- [ ] Unit Tests
+- [x] Bisection method
+- [x] Newton-Raphson method
+- [x] Secant method
+- [x] Unit Tests
 
 # Phase 2 — Integration
 - [ ] Trapezoidal rule

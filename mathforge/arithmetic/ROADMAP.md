@@ -38,8 +38,8 @@ This roadmap describes the complete long-term plan for the Arithmetic module.
 ## Features
 
 - [ ] Conversions
-- [ ] Decimal Arithmetic
-- [ ] Percentage Utilities
+- [x] Decimal Arithmetic
+- [x] Percentage Utilities
 
 ---
 

@@ -38,3 +38,7 @@ class ParserError(MathForgeError, SyntaxError):
     """
     Raised for malformed input to the expression parser.
     """
+class ConvergenceError(MathForgeError):
+    """
+    Raised when an iterative numerical method fails to converge.
+    """
